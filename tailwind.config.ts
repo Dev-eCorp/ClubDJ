@@ -157,8 +157,7 @@ const config: Config = {
           "linear-gradient(to bottom, #000000, #1a1a2e, #16213e, #0f3460)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Inter", "system-ui", "sans-serif"],
+        seeker: ["Seeker", "sans-serif"],
       },
       fontSize: {
         "10xl": "10rem",

@@ -57,7 +57,9 @@ const About: React.FC<AboutProps> = ({ stats, testimonials }) => {
                 <div className="text-4xl font-black text-white mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-300 font-medium">{stat.label}</div>
+                <div className="text-gray-300 font-medium font-seeker">
+                  {stat.label}
+                </div>
               </CardContent>
             </Card>
           ))}

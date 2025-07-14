@@ -26,35 +26,35 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Image
-            src="/logo.png"
+            src="/Completo_blanco.svg"
             alt="Club DJ School Logo"
             width={0}
             height={0}
             sizes="(max-width: 768px) 120px, 160px"
             className="h-10 w-auto"
           />
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 text-lg">
             <Link
               href="#inicio"
-              className="hover:text-purple-400 transition-colors"
+              className="hover:text-pink-500 transition-colors"
             >
               Inicio
             </Link>
             <Link
               href="#cursos"
-              className="hover:text-purple-400 transition-colors"
+              className="hover:text-pink-500 transition-colors"
             >
               Cursos
             </Link>
             <Link
               href="#equipos"
-              className="hover:text-purple-400 transition-colors"
+              className="hover:text-pink-500 transition-colors"
             >
               Equipos
             </Link>
             <Link
               href="#contacto"
-              className="hover:text-purple-400 transition-colors"
+              className="hover:text-pink-500 transition-colors"
             >
               Contacto
             </Link>

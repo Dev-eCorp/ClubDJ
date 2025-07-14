@@ -36,12 +36,12 @@ const Equipments: FC<EquipmentsProps> = ({ equipments }) => {
         </div>
 
         {/* Tarjetas de equipos */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {equipments.map(
             ({ name, description, price, image, category }, idx) => (
               <Card
                 key={idx}
-                className="group overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.03]"
+                className="h-full flex flex-col justify-between group overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.03]"
               >
                 <div className="relative overflow-hidden">
                   <Image
@@ -62,21 +62,23 @@ const Equipments: FC<EquipmentsProps> = ({ equipments }) => {
                   </Badge>
                 </div>
 
-                <CardContent className="p-6 flex flex-col justify-between">
+                <CardContent className="p-6 flex flex-col flex-grow justify-between">
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">
+                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                       {name}
                     </h3>
-                    <p className="text-gray-300 text-sm mb-4">{description}</p>
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                      {description}
+                    </p>
                   </div>
-                  <div className="mt-auto">
+
+                  <div>
                     <span className="block text-2xl font-extrabold text-green-400 mb-4">
                       {price}
                     </span>
                     <Button
                       size="sm"
                       className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 font-bold text-white transition-colors"
-                      aria-label={`Solicitar información sobre ${name}`}
                     >
                       SOLICITAR INFORMACIÓN
                     </Button>

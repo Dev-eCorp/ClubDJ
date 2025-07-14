@@ -43,7 +43,7 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
         </div>
 
         {/* Tarjetas de cursos */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8  items-stretch">
           {courses.map(
             (
               {
@@ -61,9 +61,8 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
             ) => (
               <Card
                 key={idx}
-                className="group bg-gradient-to-br from-gray-900 to-black border border-gray-700 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
+                className="overflow-hidden group bg-gradient-to-br from-gray-900 to-black border border-gray-700 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 h-full flex flex-col justify-between"
               >
-                {/* Imagen y overlay */}
                 <div className="relative overflow-hidden">
                   <Image
                     src={image || "/placeholder.svg"}
@@ -75,9 +74,7 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${color}`}
-                  />
+
                   <div className="absolute top-4 right-4 bg-black/70 p-3 rounded-full text-white">
                     {icon}
                   </div>
@@ -94,7 +91,7 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
                 </CardHeader>
 
                 {/* Contenido */}
-                <CardContent className="pt-0">
+                <CardContent className="flex flex-col flex-grow justify-between pt-0">
                   <div className="flex flex-wrap gap-2 mb-6">
                     <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">
                       <Clock className="w-4 h-4 mr-1" />
@@ -129,7 +126,7 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
 
                   <Button
                     size="lg"
-                    className={`w-full bg-gradient-to-r ${color} hover:opacity-90 font-bold`}
+                    className={`cursor-pointer w-full bg-gradient-to-r ${color} hover:opacity-90 font-bold`}
                     aria-label={`Más información sobre ${title}`}
                   >
                     MÁS INFORMACIÓN

@@ -26,6 +26,7 @@ const SoundVisualizer = () => {
               style={{
                 animationDelay: delay,
                 animationDuration: duration,
+                transform: "scaleY(0.2)",
               }}
             />
           );

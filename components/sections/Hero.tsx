@@ -63,8 +63,12 @@ const Hero = () => {
         </div>
 
         <p className="text-xl md:text-3xl mb-12 text-gray-200 font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
-          <span className="text-purple-400">Explora tu talento.</span>
-          <span className="text-pink-400"> Aprende con los mejores.</span>
+          <span className="font-seeker text-purple-400">
+            Explora tu talento.
+          </span>
+          <span className="font-seeker text-pink-400">
+            Aprende con los mejores.
+          </span>
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center items-center">

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Seeker&display=swap");
 @import "tailwindcss";
 
 html {
@@ -5,9 +6,12 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   background: #000;
   color: #fff;
+}
+
+.font-seeker {
+  font-family: "Seeker", sans-serif !important;
 }
 
 /* Custom Animations */
@@ -219,24 +223,24 @@ body {
 
 @keyframes visualizer {
   0% {
-    transform: scaleY(0.2);
+    transform: scaleY(0.3);
   }
-  30% {
-    transform: scaleY(0.6);
+  25% {
+    transform: scaleY(0.9);
   }
-  60% {
-    transform: scaleY(1);
+  50% {
+    transform: scaleY(0.4);
   }
-  80% {
-    transform: scaleY(0.5);
+  75% {
+    transform: scaleY(0.7);
   }
   100% {
-    transform: scaleY(0.2);
+    transform: scaleY(0.3);
   }
 }
 
 .animate-visualizer {
   animation-name: visualizer;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
   animation-iteration-count: infinite;
 }
