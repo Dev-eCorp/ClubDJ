@@ -22,7 +22,7 @@ const Gallery: FC<GalleryProps> = ({ galleryImages }) => {
   }, [galleryImages.length]);
 
   return (
-    <section className="py-12 md:py-18 px-4 bg-black">
+    <section className="py-12 md:py-18 px-4 bg-black" id="galeria">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight break-words">

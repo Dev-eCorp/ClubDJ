@@ -1,47 +1,47 @@
-import { Facebook, Instagram, Music, Volume2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { HiRadio } from "react-icons/hi2";
 
-const Footer = () => {
+interface FooterProps {
+  name: string;
+  description: string;
+  facebook: string;
+  instagram: string;
+}
+
+const Footer = ({ name, description, facebook, instagram }: FooterProps) => {
   return (
     <footer className="bg-black py-16 px-4 border-t border-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <h3 className="text-3xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-6">
-              Club DJ School Ibagué
+              {name}
             </h3>
             <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-              La academia líder en formación de DJs y productores musicales en
-              Ibagué. Transformamos tu pasión por la música en una carrera
-              profesional exitosa.
+              {description}
             </p>
             <div className="flex space-x-6">
-              <Link
-                aria-label="Instagram"
-                href="#"
-                className="text-gray-400 hover:text-pink-400 transition-colors transform hover:scale-110"
-              >
-                <Instagram className="w-8 h-8" />
+              <Link href={instagram} target="_blank" aria-label="Instagram">
+                <FaInstagram className="text-pink-500 hover:text-pink-400 transition hover:scale-110 w-8 h-8" />
+              </Link>
+              <Link href={facebook} target="_blank" aria-label="Facebook">
+                <FaFacebookF className="text-blue-500 hover:text-blue-400 transition hover:scale-110 w-8 h-8" />
               </Link>
               <Link
-                aria-label="Facebook"
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110"
+                href="https://wa.me/573163573337"
+                target="_blank"
+                aria-label="WhatsApp"
               >
-                <Facebook className="w-8 h-8" />
+                <FaWhatsapp className="text-green-500 hover:text-green-400 transition hover:scale-110 w-8 h-8" />
               </Link>
               <Link
-                href="#"
-                className="text-gray-400 hover:text-purple-400 transition-colors transform hover:scale-110"
+                href="https://clubdjradio.com/"
+                target="_blank"
+                aria-label="Radio Online"
               >
-                <Music className="w-8 h-8" />
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-green-400 transition-colors transform hover:scale-110"
-              >
-                <Volume2 className="w-8 h-8" />
+                <HiRadio className="text-purple-400 hover:text-purple-300 transition hover:scale-110 w-8 h-8" />
               </Link>
             </div>
           </div>
@@ -50,34 +50,22 @@ const Footer = () => {
             <h4 className="text-xl font-bold text-white mb-6">Cursos</h4>
             <ul className="space-y-3 text-gray-300">
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
+                <Link href="/#cursos" className="hover:text-purple-400">
                   Curso DJ Básico
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
+                <Link href="/#cursos" className="hover:text-purple-400">
                   Mezcla en Vivo
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
+                <Link href="/#cursos" className="hover:text-purple-400">
                   Producción Musical
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
+                <Link href="/#cursos" className="hover:text-purple-400">
                   Clases Privadas
                 </Link>
               </li>
@@ -88,35 +76,24 @@ const Footer = () => {
             <h4 className="text-xl font-bold text-white mb-6">Enlaces</h4>
             <ul className="space-y-3 text-gray-300">
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
+                <Link href="#about" className="hover:text-purple-400">
                   Sobre Nosotros
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
+                  href="/servicios/#equipos"
+                  className="hover:text-purple-400"
                 >
                   Tienda de Equipos
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
+                  href="/servicios/#servicios"
+                  className="hover:text-purple-400"
                 >
                   Eventos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Blog Musical
                 </Link>
               </li>
             </ul>
@@ -125,8 +102,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Club DJ School Ibagué. Todos los
-            derechos reservados.
+            © {new Date().getFullYear()} {name}. Todos los derechos reservados.
           </p>
         </div>
       </div>

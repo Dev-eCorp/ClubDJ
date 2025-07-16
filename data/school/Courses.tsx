@@ -8,7 +8,6 @@ const CoursesData: Course[] = [
       "Aprende los fundamentos del DJing, beatmatching y lectura de público desde cero",
     duration: "8 semanas",
     modality: "Presencial",
-    price: "$450.000",
     image: "/1.jpg",
     icon: <Headphones className="w-8 h-8" />,
     benefits: [
@@ -25,7 +24,6 @@ const CoursesData: Course[] = [
       "Técnicas avanzadas de mixing para presentaciones en vivo y eventos masivos",
     duration: "6 semanas",
     modality: "Presencial",
-    price: "$580.000",
     image: "/2.jpg",
     icon: <Play className="w-8 h-8" />,
     benefits: [
@@ -42,7 +40,6 @@ const CoursesData: Course[] = [
       "Crea, produce y masteriza tus propios tracks de música electrónica profesional",
     duration: "12 semanas",
     modality: "Presencial",
-    price: "$850.000",
     image: "/3.jpg",
     icon: <Music className="w-8 h-8" />,
     benefits: [

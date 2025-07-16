@@ -1,3 +1,4 @@
+// Modified and reusable Courses component for both School and Services
 "use client";
 
 import Image from "next/image";
@@ -10,22 +11,43 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Clock, DollarSign, Target } from "lucide-react";
+import { Clock, Target } from "lucide-react";
 import { Button } from "../ui/button";
 import { Course } from "@/lib/types";
 
 interface CoursesProps {
   courses: Course[];
+  context: "school" | "services";
 }
 
-const Courses: FC<CoursesProps> = ({ courses }) => {
+const Courses: FC<CoursesProps> = ({ courses, context }) => {
   if (!courses.length) return null;
+
+  const titleMap = {
+    school: "CURSOS DISPONIBLES",
+    services: "SERVICIOS PROFESIONALES",
+  };
+
+  const subtitleMap = {
+    school: (
+      <>
+        Elige tu camino hacia el{" "}
+        <span className="text-purple-400">éxito musical</span>
+      </>
+    ),
+    services: (
+      <>
+        Soluciones integrales para tus{" "}
+        <span className="text-purple-400">eventos y producciones</span>
+      </>
+    ),
+  };
 
   return (
     <section
-      id="cursos"
+      id={`${context === "school" ? "cursos" : "servicios"}`}
       role="region"
-      aria-label="Sección de cursos"
+      aria-label="Sección de {context}"
       className="py-12 md:py-18 px-4 bg-black"
     >
       <div className="max-w-7xl mx-auto">
@@ -33,16 +55,15 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight break-words">
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              CURSOS & SERVICIOS
+              {titleMap[context]}
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300">
-            Elige tu camino hacia el{" "}
-            <span className="text-purple-400">éxito musical</span>
+            {subtitleMap[context]}
           </p>
         </div>
 
-        {/* Tarjetas de cursos */}
+        {/* Tarjetas */}
         <div className="grid lg:grid-cols-3 gap-8  items-stretch">
           {courses.map(
             (
@@ -51,7 +72,6 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
                 description,
                 duration,
                 modality,
-                price,
                 image,
                 icon,
                 benefits,
@@ -66,7 +86,7 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
                 <div className="relative overflow-hidden">
                   <Image
                     src={image || "/placeholder.svg"}
-                    alt={`Imagen del curso ${title}`}
+                    alt={`Imagen de ${title}`}
                     width={300}
                     height={200}
                     loading="lazy"
@@ -92,44 +112,52 @@ const Courses: FC<CoursesProps> = ({ courses }) => {
 
                 {/* Contenido */}
                 <CardContent className="flex flex-col flex-grow justify-between pt-0">
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {duration}
-                    </Badge>
-                    <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">
-                      <Target className="w-4 h-4 mr-1" />
-                      {modality}
-                    </Badge>
-                    <Badge className="bg-green-600/20 text-green-300 border-green-500/30">
-                      <DollarSign className="w-4 h-4 mr-1" />
-                      {price}
-                    </Badge>
-                  </div>
+                  {(duration || modality) && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {duration && (
+                        <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {duration}
+                        </Badge>
+                      )}
+                      {modality && (
+                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">
+                          <Target className="w-4 h-4 mr-1" />
+                          {modality}
+                        </Badge>
+                      )}
+                    </div>
+                  )}
 
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3">
-                      Beneficios incluidos:
-                    </h4>
-                    <ul className="space-y-2">
-                      {benefits.map((benefit, bIdx) => (
-                        <li
-                          key={bIdx}
-                          className="flex items-center text-gray-300"
-                        >
-                          <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 flex-shrink-0" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {benefits && benefits.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="text-white font-semibold mb-3">
+                        {context === "school"
+                          ? "Beneficios incluidos:"
+                          : "Incluye:"}
+                      </h4>
+                      <ul className="space-y-2">
+                        {benefits.map((benefit, bIdx) => (
+                          <li
+                            key={bIdx}
+                            className="flex items-center text-gray-300"
+                          >
+                            <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 flex-shrink-0" />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   <Button
                     size="lg"
                     className={`cursor-pointer w-full bg-gradient-to-r ${color} hover:opacity-90 font-bold`}
                     aria-label={`Más información sobre ${title}`}
                   >
-                    MÁS INFORMACIÓN
+                    {context === "school"
+                      ? "MÁS INFORMACIÓN"
+                      : "COTIZAR SERVICIO"}
                   </Button>
                 </CardContent>
               </Card>

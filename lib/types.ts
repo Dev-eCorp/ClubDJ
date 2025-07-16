@@ -17,7 +17,6 @@ export interface Course {
   description: string;
   duration: string;
   modality: string;
-  price: string;
   image: string;
   icon: JSX.Element;
   benefits: string[];
